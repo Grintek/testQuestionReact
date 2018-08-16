@@ -5,7 +5,7 @@ import Masonry from 'react-masonry-component';
 
 import './NotesGrid.less';
 
-const NotesGrid = React.createClass({
+class NotesGrid extends React.createClass{
     render() {
         const masonryOptions = {
             itemSelector: '.Note',
@@ -34,6 +34,6 @@ const NotesGrid = React.createClass({
             </Masonry>
         );
     }
-});
+}
 
 export default NotesGrid;

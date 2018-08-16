@@ -15,30 +15,27 @@ function getStateFromFlux() {
     };
 }
 
-const App = React.createClass({
+class App extends React.createClass{
     getInitialState() {
         return getStateFromFlux();
-    },
+    }
 
     componentWillMount() {
-        NotesActions.loadNotes();
-    },
+        NotesActions.loadBooks();
+    }
 
     componentDidMount() {
         NotesStore.addChangeListener(this._onChange);
-    },
+    }
 
     componentWillUnmount() {
         NotesStore.removeChangeListener(this._onChange);
-    },
+    }
 
-    handleNoteDelete(note) {
-        NotesActions.deleteNote(note.id);
-    },
+    handleNoteDelete(book) {
+        NotesActions.idBook(book.id);
+    }
 
-    handleNoteAdd(noteData) {
-        NotesActions.createNote(noteData);
-    },
 
     render() {
         return (
@@ -48,11 +45,11 @@ const App = React.createClass({
                 <NotesGrid notes={this.state.notes} onNoteDelete={this.handleNoteDelete} />
             </div>
         );
-    },
+    }
 
     _onChange() {
         this.setState(getStateFromFlux());
     }
-});
+}
 
 export default App;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Note.less';
 
-const Note = React.createClass({
+class Note extends React.createClass{
     render() {
         const style = { backgroundColor: this.props.color };
 
@@ -20,6 +20,6 @@ const Note = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default Note;
