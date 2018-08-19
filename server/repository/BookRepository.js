@@ -13,7 +13,8 @@ export class BookRepository {
      * @param id индитификатор книги
      * @returns {*}
      */
-    static getBookById(id) {
+    static
+    getBookById(id) {
         return books.find(book => {
             // TODO костылик, так как получается id в строковом формате
             return book.id.toString() === id.toString();

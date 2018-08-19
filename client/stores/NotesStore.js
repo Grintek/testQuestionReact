@@ -1,8 +1,5 @@
 import { EventEmitter } from 'events';
 
-import AppDispatcher from '../dispatcher/AppDispatcher';
-import AppConstants from '../constants/AppConstants';
-
 const CHANGE_EVENT = 'change';
 
 let _notes = [];
@@ -14,8 +11,6 @@ function formatNote(note) {
         id: note._id,
         title: note.title,
         text: note.text,
-        color: note.color || '#ffffff',
-        createdAt: note.createdAt
     };
 }
 

@@ -1,11 +1,11 @@
-import listBooks from '../api/index'
+import WithcCurd from '../api/index'
 
-const bookArray = listBooks.then(function(result) {
-   return result
-});
+// const bookArray = listBooks.then(function(result) {
+//    return result
+// });
 
-    const books = {
-        type: "BOOKS",
-        book: bookArray
-    };
-export {books};
+//     const books = {
+//         type: "BOOKS",
+//         book: WithcCurd
+//     };
+// export {books};
