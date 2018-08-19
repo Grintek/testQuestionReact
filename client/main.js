@@ -1,41 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.js';
-import {createStore} from 'redux';
+import { createStore } from 'redux';
 import {Provider} from 'react-redux';
-import bookAction from './actions/BookActions'
+
+import {books} from './actions/BookActions'
 
 
-const reducer = (state, action) => {
+const reducer = (state = { a: []  }, action) => {
     switch (action.type) {
         case "BOOKS":
-            state = action.book;
-            break;
-        case "BOOK":
-            state = action.bookId;
-            break;
+            state = state.a = action.book;
+
     }
     return state;
 };
-
+console.log(books);
 const store_books = createStore(reducer);
-const store_bookId = createStore(reducer);
-console.log(bookAction.books);
-store_books.dispatch(bookAction.books);
-store_bookId.dispatch(bookAction.book_id);
+store_books.subscribe(() => {
+    console.log("Store update", store_books.getState())
+});
 
+store_books.dispatch(books);
 ReactDOM.render(
-    <Provider store={store_books} storeId={store_bookId}>
+<Provider state={123}>
         <div>
             <App/>
-            <p>
-                asfasfasfasfsa
-            </p>
+            <p>aaaaa</p>
         </div>
-
-    </Provider>
-
-    ,
+</Provider>,
     document.getElementById('mount-point')
 );
 

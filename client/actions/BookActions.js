@@ -1,21 +1,11 @@
-import BooksService from '../api/index'
-class bookAction {
+import listBooks from '../api/index'
 
+const bookArray = listBooks.then(function(result) {
+   return result
+});
 
-    static books() {
-        return {
-            type: "BOOKS",
-            book: BooksService.listBooks
-        }
-
-    }
-    static book_id() {
-        return {
-            type: "BOOK",
-            bookId: BooksService.getBookById
-        }
-
-    }
-
-}
-export default bookAction;
+    const books = {
+        type: "BOOKS",
+        book: bookArray
+    };
+export {books};
