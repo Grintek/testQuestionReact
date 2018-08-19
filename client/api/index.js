@@ -2,14 +2,14 @@ import axios from 'axios';
 
 import { apiPrefix } from '../../etc/config.json';
 
-export default class ax{
+export default class BooksService{
 
     static listBooks() {
-        return axios.get(`${apiPrefix}/books`);
+        return axios.get(`${apiPrefix}/api/books`);
     }
 
-    static idBook(bookId) {
-        return axios.get(`${apiPrefix}/book/${bookId}`);
+    static getBookById(bookId) {
+        return axios.get(`${apiPrefix}/api/book/${bookId}`)
     }
 
 }

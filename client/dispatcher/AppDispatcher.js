@@ -1,3 +1,3 @@
-import { Dispatcher } from 'flux';
+import { Dispatcher } from 'redux';
 
 export default new Dispatcher();

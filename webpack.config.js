@@ -1,57 +1,52 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: "./client/main.js",
+    entry: [
+        './client/main.js'
+    ],
     output: {
-        path: __dirname + '/public/build/',
-        publicPath: "build/",
-        filename: "bundle.js"
+        path: path.resolve(__dirname, './dist'),
+        filename: "bundle.js",
+        publicPath: "dist/"
     },
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loader: "babel",
-                exclude: [/node_modules/, /public/]
+                test: /\.html$/,
+                loader: 'file-loader?name=[name].[ext]',
             },
             {
-                test: /\.css$/,
-                loader: "style-loader!css-loader!autoprefixer-loader",
-                exclude: [/node_modules/, /public/]
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['babel-preset-stage-2', 'babel-preset-react']
+                }
             },
             {
-                test: /\.less$/,
-                loader: "style-loader!css-loader!autoprefixer-loader!less",
-                exclude: [/node_modules/, /public/]
-            },
-            {
-                test: /\.gif$/,
-                loader: "url-loader?limit=10000&mimetype=image/gif"
-            },
-            {
-                test: /\.jpg$/,
-                loader: "url-loader?limit=10000&mimetype=image/jpg"
-            },
-            {
-                test: /\.png$/,
-                loader: "url-loader?limit=10000&mimetype=image/png"
-            },
-            {
-                test: /\.svg/,
-                loader: "url-loader?limit=26000&mimetype=image/svg+xml"
-            },
-            {
-                test: /\.jsx$/,
-                loader: "react-hot!babel",
-                exclude: [/node_modules/, /public/]
-            },
-            {
-                test: /\.json$/,
-                loader: "json-loader"
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: "style-loader" // creates style nodes from JS strings
+                    },
+                    {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    },
+                    {
+                        loader: "sass-loader" // compiles Sass to CSS
+                    }
+                ]
             }
-        ]
+        ],
     },
-    devServer: {
-        historyApiFallback: true,
-    }
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.join(__dirname, '/view/index.dev.ejs'),
+            inject: false,
+        })
+    ]
 };
