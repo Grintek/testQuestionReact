@@ -16,7 +16,6 @@ function WithcCurd(Component) {
             axios.get(`${apiPrefix}/api/books`)
                 .then(response => response.data)
                 .then(data => this.setState((prevState) =>{ return{ data: prevState.data = data}}))
-
         };
 
         render(){

@@ -1,16 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './App.scss';
-import WithcCurd from '../api/index'
-import BookId from './BookId';
 
-function App({data}) {
+function App(props) {
+    const {user, name, age} = props.user;
     return(
-
-      <div>
-          <BookId books={data}/>
-      </div>
+        <div>Hell world { name }!
+        <h1>{age}</h1>
+            <h2>{user}</h2>
+        </div>
     );
 }
 
+function mapStateToProps(state) {
+    return {
+        user: state
+    }
+}
 
-export default WithcCurd(App);
+export default connect(mapStateToProps)(App);
