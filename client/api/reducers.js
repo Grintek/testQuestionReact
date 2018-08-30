@@ -1,7 +1,7 @@
 const initialState = {
-    user: 'Unknown User',
-    name: 'Chyka',
-    age: 23
+    name: "none",
+    pages: 0,
+    description: "Пусто"
 };
 
 export default function userstate(state = initialState) {

@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './App.scss';
-
+import BooksApp from '../components/BooksApp/BooksApp'
 function App(props) {
-    const {user, name, age} = props.user;
     return(
-        <div>Hell world { name }!
-        <h1>{age}</h1>
-            <h2>{user}</h2>
+        <div>
+            <header><h1>Books</h1></header>
+            <BooksApp state={props.user}/>
         </div>
     );
 }
