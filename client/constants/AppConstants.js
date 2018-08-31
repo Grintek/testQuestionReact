@@ -1,7 +1,3 @@
-import keyMirror from 'keymirror';
-
-export default keyMirror({
-    LOAD_NOTES_REQUEST: null,
-    LOAD_NOTES_SUCCESS: null,
-    LOAD_NOTES_FAIL: null
-});
+export const BOOKS_LOAD = "BOOKS_LOAD";
+export const BOOK_LOAD = "BOOK_LOAD";
+export const LOAD = "LOAD";

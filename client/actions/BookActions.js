@@ -1,11 +1,8 @@
-import WithcCurd from '../api/index'
+import {BOOKS_LOAD, LOAD, BOOK_LOAD} from "../constants/AppConstants";
 
-// const bookArray = listBooks.then(function(result) {
-//    return result
-// });
-
-//     const books = {
-//         type: "BOOKS",
-//         book: WithcCurd
-//     };
-// export {books};
+export const fetchBooks = (books) => {
+    return {
+        type: BOOKS_LOAD,
+        books
+    }
+};

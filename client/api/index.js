@@ -1,31 +1,17 @@
 import axios from 'axios';
+import {BOOK_LOAD, BOOKS_LOAD, LOAD} from '../constants/AppConstants'
 import React from 'react'
 import { apiPrefix } from '../../etc/config.json';
+import {fetchBooks} from '../actions/BookActions'
 
-function WithcCurd(Component) {
-    class WithcCurd extends React.Component{
-        state = {
-            data: []
-        };
-
-        componentDidMount(){
-            this.get();
-        }
-
-        get = () => {
-            axios.get(`${apiPrefix}/api/books`)
-                .then(response => response.data)
-                .then(data => this.setState((prevState) =>{ return{ data: prevState.data = data}}))
-        };
-
-        render(){
-            return(
-              <Component data={this.state.data}/>
-            );
-        }
-
-    }
-    return WithcCurd;
-}
-
-export default WithcCurd;
+export const fetchAllBooks = () => {
+    return (dispatch) => {
+        axios.get(`${apiPrefix}/api/books`)
+            .then(response => {
+                dispatch(fetchBooks(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            });
+    };
+};
