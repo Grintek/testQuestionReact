@@ -15,7 +15,6 @@ class App extends Component{
     render() {
         return (
             <div>
-                <header><h1>Books</h1></header>
                 <BooksApp state={this.props.user}/>
             </div>
         )

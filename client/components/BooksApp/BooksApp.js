@@ -2,14 +2,20 @@ import React, {Component} from 'react';
 import PropType from 'prop-types';
 
 export default function BooksApp(props){
-const {name, books} = props.state;
+const {books} = props.state;
+console.log(books);
     return (
         <div>
-            <h2>{name}</h2>
             <h1>Books {books.length}</h1>
+            <ul>
+            {books.map((e, index) =>
+                <li key={index}>
+                    {e.name}
+                    </li>
+            )}
+            </ul>
         </div>
         )
-
 }
 
 BooksApp.propType = {

@@ -9,7 +9,7 @@ const initialState = {
 export default function userstate(state = initialState, action) {
     switch (action.type) {
         case BOOKS_LOAD:
-            return [...state, action.books];
+            return { ...state, books: action.books };
         default:
             return state;
     }
