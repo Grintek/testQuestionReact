@@ -6,3 +6,10 @@ export const fetchBooks = (books) => {
         books
     }
 };
+
+export const fetchBookId = (book) => {
+  return {
+      type: BOOK_LOAD,
+      book
+  }
+};

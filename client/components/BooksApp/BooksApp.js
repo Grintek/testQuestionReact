@@ -8,8 +8,8 @@ console.log(books);
         <div>
             <h1>Books {books.length}</h1>
             <ul>
-            {books.map((e, index) =>
-                <li key={index}>
+            {books.map((e) =>
+                <li key={e.id}>
                     {e.name}
                     </li>
             )}
