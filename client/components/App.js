@@ -15,7 +15,13 @@ class App extends Component{
     render() {
         return (
             <div>
-                <BooksApp state={this.props.user}/>
+                <section>
+                    //должен быть компонент с кнопками
+                    <section>
+                        //роуторы и тд
+                        BooksApp state={this.props.user}/>
+                    </section>
+                </section>
             </div>
         )
     }
