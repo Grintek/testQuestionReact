@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 class BookId extends Component{
     static propTypes = {
         fetchBook: PropTypes.func.isRequired,
-        bookApp: PropTypes.array.isRequired,
-        bookId: PropTypes.number
+        bookApp: PropTypes.object.isRequired,
+        id: PropTypes.number
     };
 
     componentDidMount(){
@@ -26,19 +26,18 @@ class BookId extends Component{
         );
     }
 }
-function mapStateToProps(state) {
-    return {
-        bookApp: state
-    };
-}
-
 function mapDispatchToProps(dispatch){
     return {
         fetchBook(){
             dispatch(fetchBook());
         }
-
     }
+}
+
+function mapStateToProps(state) {
+    return {
+        bookApp: state
+    };
 }
 
 export default connect( mapStateToProps, mapDispatchToProps )(BookId)

@@ -1,6 +1,6 @@
 import {BOOKS_LOAD, BOOK_LOAD} from '../constants/AppConstants'
 const initialState = {
-    book: [],
+    book: { id: 0, name: '', description: '' },
     books: []
 };
 

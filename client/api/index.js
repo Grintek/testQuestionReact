@@ -23,8 +23,9 @@ export const fetchAllBooks = () => {
  */
 export const fetchBook = (id) => {
     return (dispatch) => {
-       return axios.get(`${apiPrefix}/api/books/${id}`)
+       return axios.get(`${apiPrefix}/api/book/${id}`)
             .then(response => {
+                console.log(id);
                 dispatch(fetchBookId(response.data))
             })
             .catch(error => {

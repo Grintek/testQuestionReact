@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 class BooksApp extends Component {
     static propTypes = {
         fetchAllBooks: PropType.func.isRequired,
-        user: PropType.array.isRequired
+        user: PropType.object.isRequired
     };
 
     componentDidMount(){
