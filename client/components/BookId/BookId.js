@@ -2,22 +2,34 @@ import React, {Component} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {fetchBook} from '../../api/';
 import PropTypes from "prop-types";
+
 class BookId extends Component{
     static propTypes = {
-        fetchBook: PropTypes.func.isRequired
+        fetchBook: PropTypes.func.isRequired,
+        bookApp: PropTypes.array.isRequired,
+        bookId: PropTypes.number
     };
 
     componentDidMount(){
-        this.props.fetchBook();
+        const bookId = this.props.match.params.id;
+        console.log(bookId);
+        this.props.fetchBook(bookId);
     }
     render() {
+        const {book} = this.props.bookApp;
+        console.log(book);
         return (
             <div>
                 <h1>Название книги</h1>
-                <h3></h3>
+                {book.name}
             </div>
         );
     }
+}
+function mapStateToProps(state) {
+    return {
+        bookApp: state
+    };
 }
 
 function mapDispatchToProps(dispatch){
@@ -29,4 +41,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect( null, mapDispatchToProps )(BookId)
+export default connect( mapStateToProps, mapDispatchToProps )(BookId)
