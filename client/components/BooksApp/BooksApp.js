@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropType from 'prop-types';
-import {fetchAllBooks} from '../../api/'
+import {fetchAllBooks} from '../../api/';
 import connect from "react-redux/es/connect/connect";
 import {Link} from 'react-router-dom';
 

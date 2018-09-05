@@ -11,9 +11,9 @@ class BookId extends Component{
     };
 
     componentDidMount(){
-        const bookId = this.props.match.params.id;
-        console.log(bookId);
-        this.props.fetchBook(bookId);
+        const id = this.props.match.params.id;
+        console.log(id);
+        this.props.fetchBook(id);
     }
     render() {
         const {book} = this.props.bookApp;
@@ -21,15 +21,17 @@ class BookId extends Component{
         return (
             <div>
                 <h1>Название книги</h1>
-                {book.name}
+                <h3>{book.name}
+                    {console.log(book.name)}</h3>
+                <h5>{book.description}</h5>
             </div>
         );
     }
 }
 function mapDispatchToProps(dispatch){
     return {
-        fetchBook(){
-            dispatch(fetchBook());
+        fetchBook(id){
+            dispatch(fetchBook(id));
         }
     }
 }
