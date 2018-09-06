@@ -11,8 +11,7 @@ import BooksApp from '../components/BooksApp/BooksApp';
 import BooksId from '../components/BookId/BookId';
 
 function App(){
-    const styl = {position: 'fixed',
-        width: '100%'};
+    const styl = {position: 'fixed', width: '100%', margin: 0};
     return (
             <div>
                 <section>

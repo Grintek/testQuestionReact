@@ -16,13 +16,16 @@ class BooksApp extends Component {
 
     render() {
         const {books} = this.props.user;
+        const style = {display: 'block'};
         return (
             <div>
                 <h1>Books {books.length}</h1>
                     {books.map((e) =>
+                        <div style={style} key={e.id}>
                         <Link to={`/book/${e.id}`} key={e.id}>
                             {e.name}
                         </Link>
+                        </div>
                     )}
             </div>
         )
