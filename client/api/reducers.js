@@ -9,7 +9,7 @@ export default function userstate(state = initialState, action) {
         case BOOKS_LOAD:
             return { ...state, books: action.books };
         case BOOK_LOAD:
-            return { ...state, book: action.book[0] };
+            return { ...state, book: action.book };
         default:
             return state;
     }
