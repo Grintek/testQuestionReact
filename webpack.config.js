@@ -48,5 +48,8 @@ module.exports = {
             template: path.join(__dirname, '/view/index.dev.ejs'),
             inject: false,
         })
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true
+    }
 };
