@@ -15,14 +15,14 @@ import NotFound from '../NotFound';
 
 function App(){
     const styl = {position: 'fixed', width: '100%', marginLeft: -8, marginTop: -8};
-    const sty = {background: blue[100], paddingTop: 20, paddingBottom: 20};
+    const sty = {background: blue[100], paddingTop: 10, paddingBottom: 10};
     return (
             <div>
                 <section>
                     <Paper elevation={1} style={styl}>
                         <Toolbar style={sty}>
                             <Typography>
-                                <Button href="/" color="primary" style={{backgroundColor: red[200]}}><h2>Home</h2></Button>
+                                <Button href="/" color="primary" style={{backgroundColor: red[200]}}>Home</Button>
                             </Typography>
                         </Toolbar>
                     </Paper>
@@ -31,7 +31,7 @@ function App(){
                             <Switch>
                                 <Route exact path="/" component={BooksApp} />
                                 <Route path="/books" component={BooksApp} />
-                                <Route path="/book/:id" component={BooksId} />
+                                <Route exact path="/book/:id" component={BooksId} />
                                 <Route component={NotFound} />
                             <Redirect to="/"/>
                             </Switch>

@@ -42,4 +42,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )(BookId)
+export default connect( mapStateToProps, mapDispatchToProps )(BookId);
