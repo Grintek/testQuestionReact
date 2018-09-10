@@ -13,7 +13,7 @@ import BooksApp from '../components/BooksApp/BooksApp';
 import BooksId from '../components/BookId/BookId';
 import NotFound from '../NotFound';
 
-function App(){
+function App(props){
     const styl = {position: 'fixed', width: '100%', marginLeft: -8, marginTop: -8};
     const sty = {background: blue[100], paddingTop: 10, paddingBottom: 10};
     return (
@@ -31,7 +31,7 @@ function App(){
                             <Switch>
                                 <Route exact path="/" component={BooksApp} />
                                 <Route path="/books" component={BooksApp} />
-                                <Route exact path="/book/:id" component={BooksId} />
+                                <Route strict path="/book/:id"  component={BooksId} />
                                 <Route component={NotFound} />
                             <Redirect to="/"/>
                             </Switch>
