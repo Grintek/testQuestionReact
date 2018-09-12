@@ -3,6 +3,7 @@ import PropType from 'prop-types';
 import {fetchAllBooks} from '../../api/';
 import connect from "react-redux/es/connect/connect";
 import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 class BooksApp extends Component {
     static propTypes = {
@@ -22,9 +23,9 @@ class BooksApp extends Component {
                 <h1>Books {books.length}</h1>
                     {books.map((e) =>
                         <div style={style} key={e.id}>
-                        <Link to={`/book/${e.id}`} key={e.id}>
+                        <Button href={`/books/${e.id}`} key={e.id}>
                             {e.name}
-                        </Link>
+                        </Button>
                         </div>
                     )}
             </div>

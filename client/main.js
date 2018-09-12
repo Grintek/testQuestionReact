@@ -13,7 +13,7 @@ const store = configStore();
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider theme={theme}>
-            <Router history={createBrowserHistory()}/>
+            <App />
         </MuiThemeProvider>
     </Provider>
     , document.getElementById('mount-point')

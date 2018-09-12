@@ -4,13 +4,14 @@ import PropType from 'prop-types'
 import './App.scss';
 import {fetchAllBooks} from '../api/'
 import {Route, Switch, Redirect, Link} from 'react-router-dom';
+import {Router} from '@reach/router';
 import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {blue, red} from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 import BooksApp from '../components/BooksApp/BooksApp';
-import BooksId from '../components/BookId/BookId';
+import BookId from '../components/BookId/BookId';
 import NotFound from '../NotFound';
 
 function App(props){
@@ -28,13 +29,19 @@ function App(props){
                     </Paper>
                     <section style={{paddingTop: 100}}>
                         <div>
-                            <Switch>
-                                <Route exact path="/" component={BooksApp} />
-                                <Route path="/books" component={BooksApp} />
-                                <Route strict path="/book/:id"  component={BooksId} />
-                                <Route component={NotFound} />
-                            <Redirect to="/"/>
-                            </Switch>
+                            {/*<Switch>*/}
+                                {/*<Route exact path="/" component={BooksApp} />*/}
+                                {/*<Route path="/books" component={BooksApp} />*/}
+                                {/*<Route path="/books/:id"  component={BooksId} />*/}
+                                {/*<Route component={NotFound} />*/}
+                            {/*<Redirect to="/"/>*/}
+                            {/*</Switch>*/}
+                            <Router>
+                                <BooksApp path="/"/>
+                                <BooksApp path="/books"/>
+                                <BookId path="/books/:id"/>
+                                <NotFound path="*"/>
+                            </Router>
                         </div>
                     </section>
                 </section>
