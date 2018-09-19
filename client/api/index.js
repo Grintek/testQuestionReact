@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React from 'react'
+import React from 'react';
 import { apiPrefix } from '../../etc/config.json';
-import {fetchBooks, fetchBookId} from '../actions/BookActions'
+import {fetchBooks, fetchBookId} from '../actions/BookActions';
+import {loginFail, loginSucces, requestLogin} from '../actions/UserVkAction';
 
 /**
  * Получить книги
@@ -32,4 +33,19 @@ export const fetchBook = (id) => {
                 throw(error);
             });
     };
+};
+
+export const loginVk = () => {
+    return(dispatch) => {
+        dispatch(requestLogin());
+
+        VK.Auth.login((r) => {
+            if (r.session){
+                let username = r.session.user.first_name;
+                dispatch(loginSucces(username));
+            }else{
+                dispatch(loginFail());
+            }
+        }, 4)
+    }
 };
