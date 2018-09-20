@@ -17,13 +17,6 @@ import NotFound from '../NotFound';
 import Navigation from '../container/Navigation';
 import Admin from '../components/LoginAdmin/Admin';
 
-function checkLogin() {
-    const login = window.localStorage.getItem('rr_login');
-    console.log(window.localStorage.getItem('rr_login'));
-    if(login === 'admin'){
-        console.log('propusty');
-    }
-}
 
 function App(props){
     const styl = {position: 'fixed', width: '100%', marginLeft: -8, marginTop: -8};
@@ -48,7 +41,7 @@ function App(props){
                                 <Login path="/login" />
                                 <BooksApp path="/books" />
                                 <BookId path="/books/:id" />
-                                <Admin path="/admin" onEnter={checkLogin} />
+                                <Admin path="/admin" />
                                 <NotFound default />
                             </Router>
                         </div>
