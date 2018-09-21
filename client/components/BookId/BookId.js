@@ -7,7 +7,7 @@ class BookId extends Component{
     static propTypes = {
         fetchBook: PropTypes.func.isRequired,
         bookApp: PropTypes.object.isRequired,
-        id: PropTypes.number
+        id: PropTypes.string
     };
 
     componentDidMount(){
@@ -38,7 +38,7 @@ function mapDispatchToProps(dispatch){
 
 function mapStateToProps(state) {
     return {
-        bookApp: state
+        bookApp: state.booksState
     };
 }
 

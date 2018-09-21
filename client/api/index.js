@@ -35,29 +35,22 @@ export const fetchBook = (id) => {
             });
     };
 };
-
+/**
+ * Совершаем авторизацию
+ * @returns {Function}
+ */
 export const loginVk = () => {
     return(dispatch) => {
-        dispatch({
-            type: LOGIN_REQUEST
-        });
+        dispatch(requestLogin());
 
         VK.Auth.login((respons) => {
             if (respons.session){
-                let username = respons.session.user.first_name;
-                let user_id = respons.session.user.id;
-                dispatch({
-                    type: LOGIN_SUCCES,
-                    payload: username,
-                    payId: user_id
-                });
+                let username = respons.session.user.first_name; //получаем имя
+                let user_id = respons.session.user.id; //получаем id
+                dispatch(loginSucces(username, user_id));
             }else{
-                dispatch({
-                    type: LOGIN_FAIL,
-                    error: true,
-                    payload: new Error('Ошибка авторизации')
-                });
+                dispatch(loginFail());
             }
-        }, 4, 3)
+        }, 4, 5)
     }
 };

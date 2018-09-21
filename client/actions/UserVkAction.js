@@ -6,11 +6,11 @@ export const requestLogin = () => {
     }
 };
 
-export const loginSucces = () => {
+export const loginSucces = (username, user_id) => {
     return {
         type: LOGIN_SUCCES,
-        payload: username
-
+        payload: username,
+        payId: user_id
     }
 };
 

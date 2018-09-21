@@ -42,7 +42,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
     return {
-        user: state
+        user: state.booksState
     }
 }
 

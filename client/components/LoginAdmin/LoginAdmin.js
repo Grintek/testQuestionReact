@@ -3,6 +3,7 @@ import PropType from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as vkIndex from "../../api";
+import userVkState from "../../api/redusers/vkUserReducer";
 
 class LoginAdmin extends Component{
 static propTypes = {
@@ -41,7 +42,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
     return {
-        user: state
+        user: state.userVkState
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginAdmin);
