@@ -18,7 +18,7 @@ static propTypes = {
         if (user.name){
             template = <p>Hello, {user.name}!</p>
         }else{
-            template = <button onSubmit={loginVk}>Войти</button>
+            template = <button onClick={loginVk}>Войти</button>
         }
         return(
             <div className='footer'>
