@@ -4,7 +4,8 @@ const initialState = {
     book: { id: 0, name: '', description: '' },
     books: [],
     name: '',
-    error: ''
+    error: '',
+    id: '',
 };
 
 export default function userstate(state = initialState, action) {
@@ -14,7 +15,7 @@ export default function userstate(state = initialState, action) {
         case BOOK_LOAD:
             return { ...state, book: action.book };
         case LOGIN_SUCCES:
-            return {...state, name: action.payload, error: ''};
+            return {...state, name: action.payload, id: action.payId, error: ''};
         case LOGIN_FAIL:
             return {...state, error: action.payload.message};
         default:

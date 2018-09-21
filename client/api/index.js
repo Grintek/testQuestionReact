@@ -45,9 +45,11 @@ export const loginVk = () => {
         VK.Auth.login((respons) => {
             if (respons.session){
                 let username = respons.session.user.first_name;
+                let user_id = respons.session.user.id;
                 dispatch({
                     type: LOGIN_SUCCES,
-                    payload: username
+                    payload: username,
+                    payId: user_id
                 });
             }else{
                 dispatch({
@@ -56,6 +58,6 @@ export const loginVk = () => {
                     payload: new Error('Ошибка авторизации')
                 });
             }
-        })
+        }, 4, 3)
     }
 };

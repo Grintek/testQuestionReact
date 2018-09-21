@@ -16,7 +16,10 @@ static propTypes = {
         let template;
 
         if (user.name){
-            template = <p>Hello, {user.name}!</p>
+            template = <div>
+                <p>Hello, {user.name}! <br/></p>
+                <h1>{user.id}</h1>
+            </div>;
         }else{
             template = <button onClick={loginVk}>Войти</button>
         }
