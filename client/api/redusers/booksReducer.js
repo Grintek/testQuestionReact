@@ -1,5 +1,4 @@
 import {BOOKS_LOAD, BOOK_LOAD} from '../../constants/AppConstants';
-import {LOGIN_FAIL, LOGIN_SUCCES, LOGIN_REQUEST} from '../../constants/UserVkConstants';
 const initialState = {
     book: { id: 0, name: '', description: '' },
     books: [],

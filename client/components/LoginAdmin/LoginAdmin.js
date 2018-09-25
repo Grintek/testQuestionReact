@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropType from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Button from "@material-ui/core/Button";
 import * as vkIndex from "../../api";
 import userVkState from "../../api/redusers/vkUserReducer";
 
@@ -22,7 +23,7 @@ static propTypes = {
                 <h1>{user.id}</h1>
             </div>;
         }else{
-            template = <button onClick={loginVk}>Войти</button>
+            template = <Button onClick={loginVk}>Войти</Button>
         }
         return(
             <div className='footer'>

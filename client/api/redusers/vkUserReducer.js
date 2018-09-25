@@ -1,8 +1,15 @@
 import {LOGIN_FAIL, LOGIN_SUCCES, LOGIN_REQUEST} from '../../constants/UserVkConstants';
+
+/**
+ * Добавим в хранилище из сессии наши данные чтобы не пропадали после обновления страницы
+ * @type {string}
+ */
+const name = window.localStorage.getItem('vk_first_name');
+const id = window.localStorage.getItem('vk_id');
 const initialState = {
-    name: '',
+    name: name,
     error: '',
-    id: '',
+    id: id,
 };
 
 export default function userVkState(state = initialState, action) {

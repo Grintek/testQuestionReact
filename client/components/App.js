@@ -41,7 +41,7 @@ function App(props){
                                 <Login path="/login" />
                                 <BooksApp path="/books" />
                                 <BookId path="/books/:id" />
-                                <Admin path="/admin" />
+                                <Admin path="/admin"/>
                                 <NotFound default />
                             </Router>
                         </div>
