@@ -3,15 +3,15 @@ import PropType from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Button from "@material-ui/core/Button";
-import * as vkIndex from "../../api";
+import {loginVk} from "../../api";
 import userVkState from "../../api/redusers/vkUserReducer";
 
 class LoginAdmin extends Component{
 static propTypes = {
-    vkIndex: PropType.object.isRequired
+    loginVk: PropType.func.isRequired
 };
     render(){
-        const {loginVk} = this.props.vkIndex;
+        const loginVk = this.props.loginVk;
         console.log(this.props.user);
         const user = this.props.user;
         console.log(user.name);
@@ -26,7 +26,7 @@ static propTypes = {
             template = <Button onClick={loginVk}>Войти</Button>
         }
         return(
-            <div className='footer'>
+            <div>
                 {template}
                 {user.error ? <p>{user.error}. <br/> Попробуйте еще раз</p> : ''}
             </div>
@@ -37,8 +37,11 @@ static propTypes = {
 
 function mapDispatchToProps(dispatch) {
     return{
-        vkIndex: bindActionCreators(vkIndex, dispatch)
+        loginVk(){
+           dispatch(loginVk());
         }
+
+    }
 }
 
 function mapStateToProps(state) {

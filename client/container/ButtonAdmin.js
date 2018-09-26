@@ -6,13 +6,15 @@ import Typography from "@material-ui/core/Typography";
 export const ButtonAdmin = () =>{
     const value = window.localStorage.getItem('vk_login');
     console.log(window.localStorage.getItem('vk_login'));
-    if(value === 'true') {
-        return (
-            <Typography>
-                <Button href="/admin" color="primary" style={{backgroundColor: red[200]}}>Admin</Button>
-            </Typography>
-        );
-    }else {
-        return <p>zalogintes</p>;
+    let template;
+    if(value !== 'true') {
+        template = { display: "none" };
+    }else{
+        template = {backgroundColor: red[200]};
     }
+
+    return(
+        <Typography><Button href="/admin" color="primary" style={template}>Admin</Button></Typography>
+    );
+
 };

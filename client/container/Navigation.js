@@ -21,7 +21,6 @@ export default function Navigation() {
                 <Button href="/login" color="primary" style={{backgroundColor: red[200]}}>Login</Button>
             </Typography>
             <ButtonAdmin/>
-
             <div style={{float: 'right'}}>
                 <ButtonLogout />
             </div>

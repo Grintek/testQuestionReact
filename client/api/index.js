@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import {Redirect} from '@reach/router';
 import { apiPrefix } from '../../etc/config.json';
 import {fetchBooks, fetchBookId} from '../actions/BookActions';
 import {loginFail, loginSucces, requestLogin} from '../actions/UserVkAction';
@@ -42,7 +43,6 @@ export const fetchBook = (id) => {
 export const loginVk = () => {
     return(dispatch) => {
         dispatch(requestLogin());
-
         VK.Auth.login((respons) => {
             if (respons.session){
                 const value = true;
@@ -52,7 +52,7 @@ export const loginVk = () => {
                 // запишем данные в сессию
                 window.localStorage.setItem('vk_first_name', username);
                 window.localStorage.setItem('vk_id', user_id);
-                      dispatch(loginSucces(username, user_id));
+                dispatch(loginSucces(username, user_id));
             }else{
                 dispatch(loginFail());
             }
