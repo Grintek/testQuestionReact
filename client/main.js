@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.js';
 import { Provider } from 'react-redux';
-import Router from './router';
-import {createBrowserHistory} from 'history';
 import configStore from './api/configStore';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import {theme} from '../client/theme'

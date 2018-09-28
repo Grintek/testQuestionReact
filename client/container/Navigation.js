@@ -15,7 +15,7 @@ export default function Navigation() {
         <div>
         <Toolbar style={sty}>
         <Typography>
-            <Button href="/" color="primary" style={{backgroundColor: red[200]}}>Home</Button>
+            <Button href="/home" color="primary" style={{backgroundColor: red[200]}}>Home</Button>
         </Typography>
             <Typography>
                 <Button href="/login" color="primary" style={{backgroundColor: red[200]}}>Login</Button>

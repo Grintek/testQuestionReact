@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import './_login.scss';
 import PropType from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Button from "@material-ui/core/Button";
-import {loginVk} from "../../api";
+import {loginVk} from "../../api/index";
 import userVkState from "../../api/redusers/vkUserReducer";
 
-class LoginAdmin extends Component{
+class Login extends Component{
 static propTypes = {
     loginVk: PropType.func.isRequired
 };
@@ -26,7 +27,7 @@ static propTypes = {
             template = <Button onClick={loginVk}>Войти</Button>
         }
         return(
-            <div>
+            <div className="login">
                 {template}
                 {user.error ? <p>{user.error}. <br/> Попробуйте еще раз</p> : ''}
             </div>
@@ -49,4 +50,4 @@ function mapStateToProps(state) {
         user: state.userVkState
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LoginAdmin);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
