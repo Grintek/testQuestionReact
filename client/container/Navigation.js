@@ -7,6 +7,7 @@ import {blue, red} from "@material-ui/core/colors";
 import {ButtonAdmin} from './ButtonAdmin';
 import ButtonLogout from './ButtonLogout';
 import Paper from "@material-ui/core/Paper";
+import './_navigator.scss';
 
 export default function Navigation() {
     const sty = {background: blue[100], paddingTop: 10, paddingBottom: 10};
@@ -14,16 +15,10 @@ export default function Navigation() {
     return(
         <div>
         <Toolbar style={sty}>
-        <Typography>
-            <Button href="/home" color="primary" style={{backgroundColor: red[200]}}>Home</Button>
-        </Typography>
-            <Typography>
-                <Button href="/login" color="primary" style={{backgroundColor: red[200]}}>Login</Button>
-            </Typography>
+            <Button href="/home" className="navButton" color="primary" style={{backgroundColor: red[200]}}>Home</Button>
+            <Button href="/login" className="navButton" color="primary" style={{backgroundColor: red[200]}}>Login</Button>
             <ButtonAdmin/>
-            <div style={{float: 'right'}}>
-                <ButtonLogout />
-            </div>
+            <ButtonLogout />
         </Toolbar>
         </div>
 

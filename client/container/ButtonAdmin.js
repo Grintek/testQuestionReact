@@ -14,7 +14,7 @@ export const ButtonAdmin = () =>{
     }
 
     return(
-        <Typography><Button href="/admin" color="primary" style={template}>Admin</Button></Typography>
+       <Button href="/admin" className="navButton" color="primary" style={template}>Admin</Button>
     );
 
 };
