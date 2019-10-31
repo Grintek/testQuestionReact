@@ -27,7 +27,7 @@
     "keymirror": "^0.1.1",
     "less": "^3.8.1",
     "loader": "^2.1.1",
-    "mongoose": "^5.2.8",
+    "mongoose": "^5.7.5",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
     "react": "16.4.2",
