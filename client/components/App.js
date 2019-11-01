@@ -1,38 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.scss';
-import {Router, Redirect} from '@reach/router';
+import {Redirect, Router} from '@reach/router';
 import Paper from '@material-ui/core/Paper';
-import {blue, red} from '@material-ui/core/colors';
 import BooksApp from '../components/BooksApp/BooksApp';
 import BookId from '../components/BookId/BookId';
-import Login from './Login/Login';
 import NotFound from '../NotFound';
 import Navigation from '../container/Navigation';
-import Admin from '../components/LoginAdmin/Admin';
-
+import ListQuestion from './ManagerQusestion/ListQuestion';
+import EditQuestion from './ManagerQusestion/EditQuestion';
 
 function App(props){
 
     const styl = {position: 'fixed', width: '100%', marginLeft: -8, marginTop: -8};
-    const value = window.localStorage.getItem('vk_login');
-    let loginPlay;
-        if(value === "true") {
-            loginPlay =
+    let Play;
+            Play =
                 <Router>
                 <Redirect from="/" to="/home"/>
                 <BooksApp path="/home" />
                 <BooksApp path="/books" />
                 <BookId path="/books/:id" />
-                <Admin path="/admin"/>
+                <ListQuestion path="/manager"/>
+                <EditQuestion  />
                 <NotFound default />
-                </Router>
-         }else{
-            loginPlay =
-                <Router>
-                <Redirect from="*" to="/"/>
-                <Login path="/" />
-                </Router>
-        }
+                </Router>;
     return (
             <div>
                 <section>
@@ -41,7 +31,7 @@ function App(props){
                     </Paper>
                     <section style={{paddingTop: 100}}>
                         <div>
-                            {loginPlay}
+                            {Play}
                         </div>
                     </section>
                 </section>

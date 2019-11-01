@@ -1,11 +1,9 @@
 import axios from 'axios';
 import React from 'react';
-import {Redirect} from '@reach/router';
 import { apiPrefix } from '../../etc/config.json';
+import { prefixApi } from '../../etc/configTest.json';
 import {fetchBooks, fetchBookId} from '../actions/BookActions';
-import {loginFail, loginSucces, requestLogin} from '../actions/UserVkAction';
-import {LOGIN_FAIL, LOGIN_SUCCES, LOGIN_REQUEST} from '../constants/UserVkConstants';
-
+import {addAnswer, createQuestion, deleteQuestions, fetchQuestion, fetchQuestions, updateQuestion} from  "../actions/QuestionActions";
 /**
  * Получить книги
  */
@@ -36,26 +34,81 @@ export const fetchBook = (id) => {
             });
     };
 };
-/**
- * Совершаем авторизацию
- * @returns {Function}
- */
-export const loginVk = () => {
-    return(dispatch) => {
-        dispatch(requestLogin());
-        VK.Auth.login((respons) => {
-            if (respons.session){
-                const value = true;
-                window.localStorage.setItem('vk_login', value);
-                let username = respons.session.user.first_name; //получаем имя
-                let user_id = respons.session.user.id; //получаем id
-                // запишем данные в сессию
-                window.localStorage.setItem('vk_first_name', username);
-                window.localStorage.setItem('vk_id', user_id);
-                dispatch(loginSucces(username, user_id));
-            }else{
-                dispatch(loginFail());
-            }
-        }, 4, 5)
+
+//получить все вопросы
+export const frtchAllQuestions = () => {
+    return (dispatch) => {
+        return axios.get(`${prefixApi}/questions`)
+            .then(response => {
+                dispatch(fetchQuestions(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+};
+
+//получить вопрос по id
+export const frtchOneQuestion = (id) => {
+    return (dispatch) => {
+        return axios.get(`${prefixApi}/questions/${id}`)
+            .then(response => {
+                dispatch(fetchQuestion(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+};
+
+//удаление по id
+export const deleteQuestion = (id) => {
+    return (dispatch) => {
+        return axios.delete(`${prefixApi}/questions/${id}`)
+            .then(response => {
+                dispatch(deleteQuestions(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+};
+
+//обновление Question
+export const updateOnehQuestion = (id) => {
+    return (dispatch) => {
+        return axios.put(`${prefixApi}/questions/${id}`)
+            .then(response => {
+                dispatch(updateQuestion(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+};
+
+//создание Question
+export const createOneQuestion = () => {
+    return (dispatch) => {
+        return axios.post(`${prefixApi}/question`)
+            .then(response => {
+                dispatch(createQuestion(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+};
+
+//добавление Answer
+export const addOneAnswer = () => {
+    return (dispatch) => {
+        return axios.post(`${prefixApi}/question`)
+            .then(response => {
+                dispatch(addAnswer(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            })
     }
 };
