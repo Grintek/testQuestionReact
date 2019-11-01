@@ -11,17 +11,32 @@ class EditQuestion extends Component{
 
         this.state = {
             selectCorrect: "123123",
-            redirect: false
+            redirect: false,
+            description: "",
+            checked: false
         };
 
         this.submitSave = this.submitSave.bind(this);
         this.radioForm = this.radioForm.bind(this);
         this.checkBoxForm = this.checkBoxForm.bind(this);
         this.onclickRedirect = this.onclickRedirect.bind(this);
+        this.questionDescription = this.questionDescription.bind(this);
     }
+    componentWillMount = () => {
+        this.selectedCheckboxes = new Set();
+    };
 
-    checkBoxForm(){
+    toggleCheckbox = lablel => {
+      if(this.selectedCheckboxes.has(lablel)){
+          this.selectedCheckboxes.delete(lablel);
+      }else{
+          this.selectedCheckboxes.add(lablel);
+      }
+    };
 
+    checkBoxForm(id){
+        this.toggleCheckbox(id);
+        console.log(`id: ${id}`);
     }
 
     radioForm(id){
@@ -30,10 +45,21 @@ class EditQuestion extends Component{
     }
 
     submitSave(){
+        for (const checkbox of this.selectedCheckboxes){
+            alert(`id checked ${checkbox}`);
+        }
       alert(this.state.selectCorrect);
+      alert(this.state.description);
     }
     onclickRedirect(){
         this.setState({redirect: true});
+    }
+
+
+    questionDescription(e){
+        let value = e.target.value;
+        this.setState({description: value});
+        console.log(this.state.description);
     }
     render() {
         if(this.state.redirect === true){
@@ -46,13 +72,14 @@ class EditQuestion extends Component{
                 <tr>
                     <th style={{ margin: 0, textAlign: "inherit" }} className="tb tb_column_left">{e.description}</th>
                     <th style={{ margin: 0 }} className="tb tb_column_right"><input checked={this.state.selectCorrect === e.id} onChange={this.radioForm.bind(this, e.id)} type="radio"/></th>
-                    <th style={{ margin: 0 }} className="tb tb_column_right"><input onChange={this.checkBoxForm} type="checkbox"/></th>
+                    <th style={{ margin: 0 }} className="tb tb_column_right"><input onChange={this.checkBoxForm.bind(this, e.id)} type="checkbox"/></th>
                 </tr>
             );
         });
         const link = `/manager/${this.props.id}/answer`;
         return(
             <div>
+                <label>Question: <input onChange={this.questionDescription} type="text" value={this.state.description}/></label>
                 <h1>{this.props.id}</h1>
                 <table className="tb">
                     <tr><th className="tb tb_column_left">Answer</th><th className="tb tb_column_right">Correct</th><th className="tb tb_column_right">Delete</th></tr>

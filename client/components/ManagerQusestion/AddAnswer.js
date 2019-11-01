@@ -41,10 +41,9 @@ class AddAnswer extends Component{
         return(
             <div>
             <form onSubmit={this.handleSubmit}>
-                <label>Answer:</label>
-                <input type="text" onChange={this.handleChange}/>
-                <input type="checkbox" checked={this.state.correct} onChange={this.checkBox}/>
-                <button>Create</button>
+                <label style={{ display: "block" }}>Answer:<input type="text" onChange={this.handleChange}/></label>
+                <label style={{ display: "block" }} >Is correct:<input type="checkbox" checked={this.state.correct} onChange={this.checkBox}/></label>
+                <button style={{ float: "left"}}>Create</button>
             </form>
                 <button  onClick={this.onclickRedirect}>Cancel</button>
             </div>
