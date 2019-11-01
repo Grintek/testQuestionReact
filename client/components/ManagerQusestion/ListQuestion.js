@@ -7,14 +7,14 @@ class ListQuestion extends Component{
 
 
     render() {
-        const dsa = [{ id: "123", description: "asfsafasfas"},{ id: "123", description: "asfsafasfas"},{ id: "123", description: "asfsafasfas"}];
+        const dsa = [{ id: "11", description: "asfsafasfas"},{ id: "30", description: "asfsafasfas"},{ id: "80", description: "asfsafasfas"}];
         let values = dsa.map((e) => {
             const id = `/manager/${e.id}`;
             return(
             <tr>
                 <th style={{ margin: 0, textAlign: "inherit" }} className="tb tb_column_left">{e.id}</th>
                 <th style={{ margin: 0 }} className="tb tb_column_right">
-                    <Button href={id} className="bt_edit">Edit</Button>
+                    <Button href={id}  className="bt_edit">Edit</Button>
                     <Button className="delete">Delete</Button>
                 </th>
 
@@ -27,6 +27,7 @@ class ListQuestion extends Component{
                     <tr><th className="tb tb_column_left">Question</th><th className="tb tb_column_right">Action</th></tr>
                     {values}
                 </table>
+                <a href="/manager/question">Add New Question</a>
             </div>
         )
     }

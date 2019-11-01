@@ -8,7 +8,8 @@ import NotFound from '../NotFound';
 import Navigation from '../container/Navigation';
 import ListQuestion from './ManagerQusestion/ListQuestion';
 import EditQuestion from './ManagerQusestion/EditQuestion';
-
+import AddQuestion from './ManagerQusestion/AddQuestion';
+import AddAnswer from './ManagerQusestion/AddAnswer';
 function App(props){
 
     const styl = {position: 'fixed', width: '100%', marginLeft: -8, marginTop: -8};
@@ -20,11 +21,12 @@ function App(props){
                 <BooksApp path="/books" />
                 <BookId path="/books/:id" />
                 <ListQuestion path="/manager"/>
-                <EditQuestion  />
+                <EditQuestion path="/manager/:id" />
+                <AddQuestion path="/manager/question" />
+                <AddAnswer path="/manager/:id/answer" />
                 <NotFound default />
                 </Router>;
     return (
-            <div>
                 <section>
                     <Paper elevation={1} style={styl}>
                         <Navigation />
@@ -35,7 +37,6 @@ function App(props){
                         </div>
                     </section>
                 </section>
-            </div>
         );
 }
 
