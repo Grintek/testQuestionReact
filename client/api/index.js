@@ -36,7 +36,7 @@ export const fetchBook = (id) => {
 };
 
 //получить все вопросы
-export const frtchAllQuestions = () => {
+export const fetchAllQuestions = () => {
     return (dispatch) => {
         return axios.get(`${prefixApi}/questions`)
             .then(response => {
