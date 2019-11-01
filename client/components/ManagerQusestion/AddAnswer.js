@@ -36,7 +36,7 @@ class AddAnswer extends Component{
 
     render() {
         if(this.state.redirect === true && this.state.name !== "" || this.state.cancel === true){
-            return redirectTo("/manager")
+            return redirectTo(`/manager/${this.props.id}`)
         }
         return(
             <div>
